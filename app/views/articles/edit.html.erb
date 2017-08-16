@@ -1,0 +1,26 @@
+<h1>Edit Article</h1>
+
+<% if @article.errors.any? %>
+	<h2><%= pluralize(@article.errors.count,"Error")%> Prohibted this article from being saved:</h2>
+	<ul>
+	<% @article.errors.full_messages.each do |error| %>
+	<li><%= error %></li>
+	<% end %>
+	</ul>
+<% end %>
+
+<%= form_for @article do |f| %>                        <!-- if :article is used then it makes a post request-->
+	<p>
+		<%= f.label :title%>
+		<%= f.text_field :title %>
+	</p>
+	<p>
+	 	<%= f.label :text%>
+		<%= f.text_field :text %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
+
+<%= link_to 'Back',articles_path %>
