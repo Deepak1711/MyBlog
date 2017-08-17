@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+
+	http_basic_authenticate_with name:"dhh",password:"secret",except: [:index,:show]
+
 	def index
 		@articles=Article.all
 	end
@@ -12,7 +15,7 @@ class ArticlesController < ApplicationController
 	def edit
 		@article=Article.find(params[:id])
 	end
- 
+
 	def create 
 		# @article=Article.new(params[:article])            #due to strong parameters we need to whitelist the parameters that 
 															#we want to set as attributes in model
